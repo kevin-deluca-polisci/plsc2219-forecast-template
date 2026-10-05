@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026 Midterm Forecast</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <p class="kicker">2026 U.S. House and Senate forecast</p>
+    <h1 id="title">My 2026 Midterm Forecast</h1>
+    <p id="tagline" class="tagline" hidden></p>
+    <p id="asof" class="asof"></p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div id="demo-banner" class="banner banner-info" hidden></div>
+  <div id="problems" class="banner banner-warn" hidden></div>
+  <div id="notes" class="banner banner-info" hidden></div>
+  <div id="empty" class="empty" hidden></div>
+
+  <div id="content" hidden>
+    <section class="topline" aria-label="Topline">
+      <div class="card" id="top-house"></div>
+      <div class="card" id="top-senate"></div>
+    </section>
+
+    <section class="block">
+      <div class="block-head">
+        <h2>Senate</h2>
+        <p class="note" id="senate-note"></p>
+      </div>
+      <div id="senate-map" class="senate-map" role="group" aria-label="Senate races by state"></div>
+      <div class="legend" id="legend-senate"></div>
+    </section>
+
+    <section class="block">
+      <div class="block-head">
+        <h2>House</h2>
+        <p class="note">One square per district, grouped by state. Hover or tap a square for details.</p>
+      </div>
+      <div id="house-grid" class="house-grid" role="group" aria-label="House races by state"></div>
+      <div class="legend" id="legend-house"></div>
+    </section>
+
+    <section class="block">
+      <div class="block-head">
+        <h2>Seat distribution</h2>
+        <p class="note" id="dist-note"></p>
+      </div>
+      <div id="dist" class="dist"></div>
+    </section>
+
+    <section class="block">
+      <div class="block-head">
+        <h2>Closest races</h2>
+        <p class="note" id="table-note"></p>
+      </div>
+      <div class="controls">
+        <div class="seg" role="tablist" aria-label="Chamber">
+          <button type="button" data-office="all" class="on">All</button>
+          <button type="button" data-office="house">House</button>
+          <button type="button" data-office="senate">Senate</button>
+        </div>
+        <input id="search" type="search" placeholder="Search state, district or candidate" aria-label="Search races">
+      </div>
+      <div class="table-wrap"><table id="races-table"></table></div>
+      <button type="button" id="show-all" class="link-btn"></button>
+    </section>
+
+    <section class="block" id="method-block" hidden>
+      <div class="block-head"><h2>About this model</h2></div>
+      <div id="method" class="prose"></div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <nav id="links" class="links"></nav>
+    <p class="fine">A student forecast made for a college course on the 2026 midterm elections. It is not affiliated with any campaign, party or news organization.
+      Race list and candidates: course race file, built from state candidate lists and the CAGE candidate data (Cha, Kuriwaki and Snyder).
+      Site template: PLSC 2219.</p>
+  </div>
+</footer>
+
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<script src="config.js"></script>
+<script src="assets/core.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
