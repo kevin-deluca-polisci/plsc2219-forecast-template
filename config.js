@@ -20,8 +20,8 @@ window.SITE_CONFIG = {
   // and how you handled uncertainty. Until you fill this in, your site shows a
   // reminder in this spot.
   //
-  // For example, the class model could be described like this (don't copy it;
-  // describe your own model):
+  // For example, the class model could be described like this (describe your
+  // own model):
   //   "A fundamentals-only model (no polls). Each race's predicted Democratic share combines the district's partisan lean, incumbency, and a forecast of the national House vote from presidential approval, gas prices, income and the midterm penalty.",
   //   "Uncertainty combines one national error shared by every race with a separate error for each race. Seat totals come from 10,000 simulated elections.",
   method: [

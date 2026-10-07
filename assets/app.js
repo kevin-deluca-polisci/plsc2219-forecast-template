@@ -54,7 +54,7 @@
     sFile ? getCSV(sFile).catch(function () { return null; }) : Promise.resolve(null)
   ]).then(function (res) { build(res[0], res[1], res[2], res[3]); })
     .catch(function (e) {
-      showEmpty("<p><strong>The page could not load its data.</strong> If you opened <code>index.html</code> straight from your computer, that is expected: browsers block it. View the site at its GitHub Pages address instead.</p><p class='note'>" + esc(e) + "</p>");
+      showEmpty("<p><strong>The page could not load its data.</strong> The site loads its data from its GitHub Pages address; browsers block it when <code>index.html</code> is opened as a file.</p><p class='note'>" + esc(e) + "</p>");
     });
 
   function setHeader() {
@@ -64,14 +64,14 @@
     if (demo) {
       $("demo-banner").hidden = false;
       $("demo-banner").innerHTML = "<strong>Example data.</strong> This preview shows the class model's numbers as a " +
-        (demo === "prelim" ? "preliminary forecast (point predictions only)" : demo === "probs" ? "forecast with win probabilities but no seat_sims.csv yet" : "final forecast (with probabilities and simulations)") +
+        (demo === "prelim" ? "preliminary forecast (point predictions only)" : demo === "probs" ? "forecast with win probabilities (no seat_sims.csv)" : "final forecast (with probabilities and simulations)") +
         ". Remove <code>?demo=" + esc(demo) + "</code> from the address to see your own files.";
     }
   }
   function setLinks() {
     var L = CFG.links || {}, out = [];
     if (L.class_forecast) out.push('<a href="' + esc(L.class_forecast) + '">Class forecast</a>');
-    if (L.gallery) out.push('<a href="' + esc(L.gallery) + '">All student forecasts</a>');
+    if (L.gallery) out.push('<a href="' + esc(L.gallery) + '">All forecasts</a>');
     if (L.tracker) out.push('<a href="' + esc(L.tracker) + '">Forecast tracker</a>');
     $("links").innerHTML = out.join("");
     $("links").hidden = !out.length;
@@ -94,7 +94,7 @@
     }
 
     if (problems.length) {
-      $("problems").innerHTML = "<strong><span class='icon' aria-hidden='true'>&#9888;</span>Check your forecast file.</strong> The page shows what it can, but these need fixing:<ul><li>" + problems.join("</li><li>") + "</li></ul>";
+      $("problems").innerHTML = "<strong><span class='icon' aria-hidden='true'>&#9888;</span>Forecast file problems.</strong> Fix these and upload the file again:<ul><li>" + problems.join("</li><li>") + "</li></ul>";
       $("problems").hidden = false;
     }
     if (asof) $("asof").textContent = "Forecast as of " + asof;
@@ -278,9 +278,9 @@
       : ["15+", "8-15", "3-8", "under 3", "3-8", "8-15", "15+"];
     var html = RATINGS.map(function (k, i) {
       return "<span class='key'><i class='sw r-" + k.key + "'></i>" + k.label + " <span class='num'>(" + cuts[i] + ")</span></span>";
-    }).join("") + "<span class='key'><i class='sw r-safe-d fixed'></i>Hatched: one side has no candidate (fixed by the race file)</span>";
+    }).join("") + "<span class='key'><i class='sw r-safe-d fixed'></i>Hatched: fixed by the race file</span>";
     var rule = useP ? "<span class='key'>Ratings use the favorite's win probability.</span>"
-      : "<span class='key'>Ratings use fixed cutoffs on the predicted margin, in points. They are a convention, not a probability.</span>";
+      : "<span class='key'>Ratings use cutoffs on the predicted margin, in points.</span>";
     $("legend-senate").innerHTML = html + rule;
     $("legend-house").innerHTML = html + rule;
   }
@@ -291,19 +291,19 @@
     if (!S) {
       $("dist-note").textContent = "";
       box.style.display = "block";
-      box.innerHTML = "<div class='placeholder'><strong>Uncertainty goes here.</strong> " +
-        (useP ? "Add <code>seat_sims.csv</code> (one row per simulation, at least 1,000) and this section will show the range of seat outcomes and each party's chance of a majority."
-              : "This forecast has point predictions only, so it cannot say how likely each outcome is yet. Once you add win probabilities and <code>seat_sims.csv</code> (HW7), this section will show the range of seat outcomes and each party's chance of a majority.") +
+      box.innerHTML = "<div class='placeholder'><strong>Seat distribution.</strong> " +
+        (useP ? "Adding <code>seat_sims.csv</code> (at least 1,000 simulations) shows the range of seat outcomes and each party's chance of a majority here."
+              : "Adding win probabilities and <code>seat_sims.csv</code> (HW7) shows the range of seat outcomes and each party's chance of a majority here.") +
         "</div>";
       return;
     }
     $("dist-note").textContent = "How many seats Democrats win across " + S.h.length.toLocaleString() + " simulated elections. Bars at or past the dashed line give Democrats a majority.";
     if (S.isDefault) {
       var why = S.kind === "share"
-        ? "These simulations use your predictions with default error sizes borrowed from the class model: a national error of about 1.7 points shared by every House race (1.3 in the Senate) and a race-specific error of about 4.0 points (5.9 in the Senate)."
-        : "These simulations use your win probabilities, with races tied together by a default national swing borrowed from the class model, so that a good Democratic year helps Democrats everywhere at once.";
+        ? "Simulated from these predictions with the class model's error sizes: a national error of about 1.7 points shared by every House race (1.3 in the Senate) and a race-specific error of about 4.0 points (5.9 in the Senate)."
+        : "Simulated from these win probabilities, with the class model's national swing moving all races together.";
       $("dist-note").innerHTML = esc($("dist-note").textContent) + "<br><span class='badge'>default uncertainty</span> " + esc(why) +
-        " Once you upload your own <code>seat_sims.csv</code> (HW7), it replaces these.";
+        " An uploaded <code>seat_sims.csv</code> replaces these.";
     }
     box.innerHTML = "";
     box.appendChild(hist("House", S.h, HOUSE_MAJ));
