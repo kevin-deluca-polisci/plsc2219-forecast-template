@@ -23,7 +23,7 @@ Your GitHub username appears in the site address (`username.github.io/...`). If 
 1. **Sign in to GitHub** (or create a free account at github.com).
 2. **Copy the template.** On the template's GitHub page, click the green **Use this template** button, then **Create a new repository**. Give it a name, for example `forecast-2026`. Choose **Public**. Click **Create repository**.
 3. **Turn on GitHub Pages.** In your new repository, go to **Settings → Pages**. Under **Build and deployment**, set **Source** to **Deploy from a branch**, choose the branch **main** and the folder **/ (root)**, and click **Save**. After a minute or two, the Pages screen shows your site's address: `https://yourusername.github.io/forecast-2026/`.
-4. **Open your site.** Your site address is the one on the Settings → Pages screen, for example `https://yourname.github.io/forecast-2026/`. Bookmark it: it's the URL you give in HW7 (Q2.7) and in the gallery form. The site will say "No forecast yet." To see what it will look like with data, add `?demo=prelim`, `?demo=probs` or `?demo=final` to the end of the address. These previews use the class model's numbers.
+4. **Open your site.** Your site address is the one on the Settings → Pages screen, for example `https://yourname.github.io/forecast-2026/`. Bookmark it: it's the URL you give in HW7 and in the gallery form. The site will say "No forecast yet." To see what it will look like with data, add `?demo=prelim`, `?demo=probs` or `?demo=final` to the end of the address. These previews use the class model's numbers.
 
 ## Adding Your Forecast
 
@@ -51,7 +51,7 @@ If the page goes blank after you edit `config.js`, you probably deleted a quotat
 
 ## The Gallery (Optional)
 
-The gallery compares listed forecasts with the class model: each forecaster's seat projections, chances of a majority, and the races where forecasters disagree most. It reads the numbers from your site, so it shows your latest upload, under your nickname, until the deadline. At 11:59 pm Eastern on Sunday, November 1 the gallery freezes and keeps what your site showed at that moment. Being listed is optional. If you want to be included, send your site address and nickname through the form on Canvas. You can ask to be removed at any time.
+The gallery compares listed forecasts with the class model: each forecaster's seat projections, chances of a majority, and the races where forecasters disagree most. It reads the numbers from your site, so it shows your latest upload, under your nickname, until the deadline. At 11:59 pm Eastern on Sunday, November 1 the gallery freezes and keeps what your site showed at that moment. Being listed is optional. If you want to be included, email Prof. DeLuca your site address and the nickname you want displayed. You can ask to be removed at any time.
 
 ## Files to Leave As Is
 
